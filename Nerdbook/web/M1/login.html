@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Inserire all’interno della pagina di login.html un form per richiedere username
+e password all’utente, utilizzando i campi di input corretti. 
+Create una sezione di navigazione che permetta di raggiungere la pagina
+descrizione.html, profilo.html e bacheca.html.
+Inserite le metainformazioni sulla pagina e validatela.
 -->
-<html>
+<html lang="it">
     <head>
-        <title>TODO supply a title</title>
+        <title>Nerdbook Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Riccardo Vacca - Matricola 49313">
+        <meta name="keywords" content="social network amici incontri messaggi condividere login"> 
     </head>
     <body>
-        <div>TODO write content</div>
+        <header>
+            <div id="title">
+                <a id="benvenuti"><h1>Login</h1></a>
+            </div>
+            <h2>Accedi per incontrare nuovi amici e inserire nuovi post</h2>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="descrizione.html">Descrizione di Nerdbook</a></li>
+                <li><a href="profilo.html">Profilo</a></li>
+                <li><a href="bacheca.html">Bacheca</a></li>
+            </ol>
+        </nav>
+    
+        <div id="divBody">
+            <div id="formLogin">
+                <form action="servlet.java" method="post">
+                    <div>
+                        <h3>Autenticazione</h3>
+                        <label for="nomeUtente">Nome utente</label>
+                        <input type="text" name="nomeUtente" id="nomeUtente"><br/>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                        <button type="submit">Login</button>
+                        <button type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
     </body>
 </html>
