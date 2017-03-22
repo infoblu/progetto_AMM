@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Nerdbook Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Riccardo Vacca (Matricola 49313)">
+        <meta name="keywords" content="social network amici incontri messaggi condividere profilo"> 
+    </head>
+    <body>
+        <header>
+            <div id="title">
+                <a id="benvenuti"><h1>Profilo</h1></a>
+            </div>
+            <h2>Fatti trovare dai tuoi amici, racconta qualcosa di te!</h2>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="descrizione.html">Descrizione di Nerdbook</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ol>
+        </nav>
+    
+        <div id="divBody">
+            <div id="formProfilo">
+                <form action="servlet.java" method="post">
+                    <div>
+                        <h3>Profilo</h3>
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome"><br/>
+                        <label for="cognome">Cognome</label>                        
+                        <input type="text" name="cognome" id="cognome"><br/>
+                        <label for="immagine">Immagine del profilo</label>
+                        <input type="url" name="immagine" id="immagine"><br/>
+                        <label for="frase">Frase di presentazione</label>
+                        <textarea name="frase" id="frase"></textarea><br/>
+                        <label for="dataNascita">Data di nascita</label>
+                        <input type="date" name="dataNascita" id="dataNascita"><br/>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password"><br/>
+                        <label for="ripetiPassword">Ripeti password</label>
+                        <input type="password" name="ripetiPassword" id="ripetiPassword">
+                        <button type="submit">Invia</button>
+                        <button type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </body>
+</html>
+
