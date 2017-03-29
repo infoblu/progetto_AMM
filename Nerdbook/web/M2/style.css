@@ -1,0 +1,51 @@
+/*
+Foglio di stile applicato a tutte le pagine del sito Nerdbook
+*/
+/* 
+    Data creazione: 28/03/2017
+    Autore: Riccardo Vacca - matricola 49313
+    Data ultimo aggiornamento: 28/03/2017
+*/
+body{
+    /* background-color: #3399ff; */
+    /* background-color: #92a8d1; */
+    background-color: #b1cbbb;
+    font: 14px/20px "Open Sans", Arial, sans-serif;
+    /* color: #3e444c; */
+    color: #344259;
+    /* color: ;*/
+}
+
+a:link {
+    /* font: 14px/20px "Open Sans", Arial, sans-serif; */
+    text-decoration: none;
+    color: #1e56b2;
+}
+a:visited {
+    text-decoration: none;
+    color: #a7211a;
+}
+a:hover{
+    text-decoration: underline;
+    color: #f56616;
+}
+
+h1 {
+    font: 30px/30px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+h2 {
+    font: 22px/22px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+h3 {
+    font: 18px/20px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+h1, h2, h3 {
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
