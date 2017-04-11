@@ -4,20 +4,20 @@ Foglio di stile applicato a tutte le pagine del sito Nerdbook
 /* 
     Data creazione: 28/03/2017
     Autore: Riccardo Vacca - matricola 49313
-    Data ultimo aggiornamento: 28/03/2017
+    Data ultimo aggiornamento: 11/04/2017
 */
 body{
-    /* background-color: #3399ff; */
-    /* background-color: #92a8d1; */
-    background-color: #b1cbbb;
-    font: 14px/20px "Open Sans", Arial, sans-serif;
-    /* color: #3e444c; */
+    /* background-color: #b1cbbb; */
+    /* background-color: #5db5ff; */
+	background-color: #5db5ff;;
+	/* background-color: #BEB5C9; */
+	font: 14px/20px "Open Sans", Arial, sans-serif;
     color: #344259;
-    /* color: ;*/
+	
+
 }
 
 a:link {
-    /* font: 14px/20px "Open Sans", Arial, sans-serif; */
     text-decoration: none;
     color: #1e56b2;
 }
@@ -31,21 +31,157 @@ a:hover{
 }
 
 h1 {
-    font: 30px/30px "Open Sans", Arial, sans-serif;
-    font-weight: bold;
+    font: 30px/10px "Open Sans", Arial, sans-serif;;
+    
 }
 h2 {
-    font: 22px/22px "Open Sans", Arial, sans-serif;
-    font-weight: bold;
+    font: 14px/14px "Open Sans", Arial, sans-serif;;
+    
 }
 h3 {
-    font: 18px/20px "Open Sans", Arial, sans-serif;
-    font-weight: bold;
+    font: 18px/14px "Open Sans", Arial, sans-serif;;
+    
 }
 
 h1, h2, h3 {
     margin: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-weight: bold;
+    
 }
 
+h1>a:hover,h2>a:hover,h3>a:hover{
+    text-decoration: none;
+    color: #344259;
+}
+
+header {
+    float: left;
+    top: 10px;
+    height: 60px;
+    width: 220px;
+	padding-left: 5px;
+
+}
+nav { 
+    top: 10px;
+    height: 60px;
+	text-align:left;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left:230px;
+	margin-right:215px;
+}
+div #logout {
+	float: right;
+    top: 10px;
+    height: 60px;
+	width: 200px;
+	text-align:left;
+	padding-left: 5px;	
+	padding-right: 5px;	
+}
+
+
+
+nav ol, nav li {
+    list-style-type: none;
+    display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+nav li.active{
+    font-weight: bold;
+}
+
+div .post, div #formLogin, div #formProfilo, div .indice , div #divPresentazione {
+	padding-left: 5px;
+	padding-bottom: 5px;
+    margin-top: 5px;
+	margin-bottom: 5px;
+    
+}
+
+div #divBody{
+	display: block;
+}
+div #ricerca {
+	background-color: #97cbff;
+	float: left;
+    width: 220px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	
+}
+
+/* Box dei div principali*/
+
+div #ricerca, div .post, div #logout, header, nav , div #formLogin, div #formProfilo, div .indice , div #divPresentazione{
+	
+	background-color: #97cbff;
+	border-style: 2px solid;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; /* firefox */
+	-webkit-border-radius: 5px; /* safari, chrome */
+    border-color: #003871;
+	box-shadow: 0 0 5px rgba(0,0,0,.6);
+}
+
+div #divPosts , #formLogin, #formProfilo{
+	margin-top: 10px;
+	margin-left:230px;
+	margin-right:215px;
+	width: auto;
+}
+
+
+
+
+
+div #formRicerca{
+	text-align:center;
+    display: inline-block;
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+
+}
+
+#formRicerca button{
+    width: 200px;
+}
+#formRicerca input, #formLogin input, #formProfilo input, #formProfilo textarea{
+    width: 200px;
+	background-color: #ffffce;
+}
+
+#formRicerca  label:after, #formLogin label:after, #formProfilo label:after{
+    content: '\A';
+    white-space: pre;
+}
+
+form #divPulsanti {
+	padding-top:10px;
+}
+
+#divUtenti h3, #divGruppi h3{
+	text-align:center;
+}
+#divUtenti {
+	margin-top:20px;
+}
+#divGruppi ol, #divGruppi li, #divUtenti ol, #divUtenti li{
+    list-style-type: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+
+
+#titoloLogin {
+	text-align:center;
+}

@@ -11,9 +11,10 @@
     <body>
         <header>
             <div id="title">
-                <a id="benvenuti"><h1>Login</h1></a>
-            </div>
-            <h2>Accedi per incontrare nuovi amici e inserire nuovi post</h2>
+                <h1>Login</h1>
+				<h2>Accedi per inserire nuovi post</h2>
+			</div>
+            
         </header>
         <nav>
             <ol>
@@ -27,13 +28,15 @@
             <div id="formLogin">
                 <form action="servlet.java" method="post">
                     <div>
-                        <h3>Autenticazione</h3>
+                        <div id="titoloLogin"><h3>Nerdbook</h3></div>
                         <label for="nomeUtente">Nome utente</label>
                         <input type="text" name="nomeUtente" id="nomeUtente"><br/>
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password">
-                        <button type="submit">Login</button>
-                        <button type="reset">Reset</button>
+						<div id="divPulsanti">
+							<button type="submit">Login</button>
+							<button type="reset">Reset</button>
+						</div>
                     </div>
                 </form>
             </div>

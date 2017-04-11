@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <title>Nerdbook Login</title>
+        <title>Nerdbook Profilo</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Riccardo Vacca (Matricola 49313)">
@@ -11,9 +11,10 @@
     <body>
         <header>
             <div id="title">
-                <a id="benvenuti"><h1>Profilo</h1></a>
-            </div>
-            <h2>Fatti trovare dai tuoi amici, racconta qualcosa di te!</h2>
+                <h1>Profilo</h1>
+				<h2>Racconta qualcosa di te</h2>
+			</div>
+            
         </header>
         <nav>
             <ol>
@@ -23,6 +24,35 @@
         </nav>
     
         <div id="divBody">
+			<div id="ricerca">
+				<div id="formRicerca">
+					<form action="servlet.java" method="post">
+						<div>
+							<h3><label for="nomeUtente">Ricerca</label></h3>
+							<input type="text" name="nomeUtente" id="nomeUtente"><br/>
+							<div id="divPulsanti">
+								<button type="submit">Cerca</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="divUtenti">
+					<h3>Persone</h3>
+					<ol>
+						<li><a href="#">Barack Obama</a></li>
+						<li><a href="#">Ken Follett</a></li>
+						<li><a href="#">Jean-Luc Picard</a></li>
+					</ol>										
+				</div>
+				<div id="divGruppi">
+					<h3>Gruppi</h3>
+					<ol>
+						<li><a href="#">Riders</a></li>
+						<li><a href="#">Star Trek</a></li>
+						<li><a href="#">Squash</a></li>
+					</ol>										
+				</div>
+			</div>
             <div id="formProfilo">
                 <form action="servlet.java" method="post">
                     <div>
@@ -41,9 +71,11 @@
                         <input type="password" name="password" id="password"><br/>
                         <label for="ripetiPassword">Ripeti password</label>
                         <input type="password" name="ripetiPassword" id="ripetiPassword">
-                        <button type="submit">Invia</button>
-                        <button type="reset">Reset</button>
-                    </div>
+						<div id="divPulsanti">
+							<button type="submit">Aggiorna</button>
+							<button type="reset">Reset</button>
+						</div>
+						</div>
                 </form>
             </div>
         </div>    

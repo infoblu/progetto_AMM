@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <title>Nerdbook Login</title>
+        <title>Nerdbook Bacheca</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Riccardo Vacca (Matricola 49313)">
@@ -9,55 +9,98 @@
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
-        <header>
-            <div id="title">
-                <h1><a id="benvenuti" class="internal"></a>Bacheca</h1>
-            </div>
-            <h2>Benvenuto nella mia bacheca</h2>
-        </header>
-        <nav>
-            <ol>
-                <li><a href="descrizione.html">Descrizione di Nerdbook</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ol>
-        </nav>
-        <div id="divBody">
-             <div id="divPosts">
-                 <div>
-                     <h3>
-                        Barack Obama
-                     </h3>
-                     <img alt="Foto del profilo" src="img/barackobama.jpg" />
-                     <p>
-                        Hey guys! Vote for me, please! 
-                     </p>
-                 </div>
-                 <div>
-                     <h3>
-                        Ken Follett
-                     </h3>
-                     <img alt="Foto del profilo" src="img/kenfollett.jpg" />
-                     <p>
-                        Now I'm going to tell you my new bestseller
-                     </p>
-                     <img alt="Copertina de I Giorni dell'eternità" src="img/copertina_bestseller.jpg" />
-                 </div>
-                 <div>
-                     <h3>
-                        Jean-Luc Picard
-                     </h3>
-                     <img alt="Foto del profilo" src="img/picard.png" />
-                     <p>
-                        Spazio: ultima frontiera. Questi sono i viaggi della 
-                        nave stellare Enterprise. La sua missione è quella di 
-                        esplorare strani, nuovi mondi, alla ricerca di nuove 
-                        forme di vita e di nuove civiltà, per arrivare là dove 
-                        nessuno è mai giunto prima. 
-                     </p>
-                     <a class="external" href="https://it.wikipedia.org/wiki/Star_Trek:_The_Next_Generation">Visit USS Enterprise (NCC-1701-D)</a>
-                 </div>
-             </div>
-            
-        </div>
+
+			<div id="intestazione">
+				<header>
+					<div id="title">
+						<h1>Bacheca</h1>
+						<h2>Benvenuto nella mia bacheca</h2>
+					</div>
+				</header>
+				<div id="logout">
+				Riccardo Vacca
+				<a href="#">Logout</a>
+				</div>					
+				<nav>
+					<ol>
+						<li><a href="descrizione.html">Descrizione di Nerdbook</a></li>
+						<li><a href="login.html">Login</a></li>
+					</ol>
+				</nav>
+			
+
+			</div>
+			
+
+            <div id="divBody">
+				<div id="ricerca">
+					<div id="formRicerca">
+						<form action="servlet.java" method="post">
+							<div>
+								<h3><label for="nomeUtente">Ricerca</label></h3>
+								<input type="text" name="nomeUtente" id="nomeUtente"><br/>
+								<div id="divPulsanti">
+									<button type="submit">Cerca</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="divUtenti">
+						<h3>Persone</h3>
+						<ol>
+							<li><a href="#">Barack Obama</a></li>
+							<li><a href="#">Ken Follett</a></li>
+							<li><a href="#">Jean-Luc Picard</a></li>
+						</ol>										
+					</div>
+					<div id="divGruppi">
+						<h3>Gruppi</h3>
+						<ol>
+							<li><a href="#">Riders</a></li>
+							<li><a href="#">Star Trek</a></li>
+							<li><a href="#">Squash</a></li>
+						</ol>										
+					</div>
+				</div>
+				<div id="divPosts">
+					<div id="divPresentazione">
+						Riccardo Vacca: Curiosisty killed the cat
+					</div>
+					<div class="post">
+						 <h3>
+							Barack Obama
+						 </h3>
+						 <img alt="Foto del profilo" src="img/barackobama.jpg" />
+						 <p>
+							Hey guys! Vote for me, please! 
+						 </p>
+					</div>
+					<div class="post">
+						 <h3>
+							Ken Follett
+						 </h3>
+						 <img alt="Foto del profilo" src="img/kenfollett.jpg" />
+						 <p>
+							Now I'm going to tell you my new bestseller
+						 </p>
+						 <img alt="Copertina de I Giorni dell'eternità" src="img/copertina_bestseller.jpg" />
+					</div>
+					<div class="post">
+						 <h3>
+							Jean-Luc Picard
+						 </h3>
+						 <img alt="Foto del profilo" src="img/picard.png" />
+						 <p>
+							Spazio: ultima frontiera. Questi sono i viaggi della 
+							nave stellare Enterprise. La sua missione è quella di 
+							esplorare strani, nuovi mondi, alla ricerca di nuove 
+							forme di vita e di nuove civiltà, per arrivare là dove 
+							nessuno è mai giunto prima. 
+						 </p>
+						 <a class="external" href="https://it.wikipedia.org/wiki/Star_Trek:_The_Next_Generation">Visit USS Enterprise (NCC-1701-D)</a>
+					</div>
+				</div>   
+			</div>
+			
     </body>
 </html>
