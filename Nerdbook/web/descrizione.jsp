@@ -1,0 +1,109 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Nerdbook</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Riccardo Vacca (Matricola 49313)">
+        <meta name="keywords" content="social network amici incontri messaggi condividere"> 
+        <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    </head>
+    <body>
+        <header>
+            <div id="title">
+                <h1><a id="benvenuti">Nerdbook</a></h1>
+				<h2>Il social network più popoloso</h2>
+			</div>
+            
+        </header>
+        <nav>
+            <ol>
+                <li><a href="#">Iscriviti, è gratis!</a></li>
+                <li>Già iscritto? <a href="login.jsp">Accedi</a></li>
+                <li><a href="#">Contatti</a></li>
+                <li><a href="#">Segnala un problema</a></li>
+            </ol>
+        </nav>
+        
+        <div id="divBody">
+            <div id="login">
+
+				<div class="indice">
+					<a href="#presentazione"><h3>Presentazione</h3></a>
+					<a href="#iscriversi"><h3>Come iscriversi</h3></a>
+					<a href="#trovaamici"><h3>Trovare amici</h3></a>
+					<a href="#cancellarsi"><h3>Come cancellarsi</h3></a>
+					<a href="#faq"><h3>Da sapere</h3></a>
+				</div>
+                <div class="indice">
+					<h3><a id="presentazione">Presentazione</a></h3>
+					<p>Nerdbook è un social network che conta milioni di iscritti in tutto il mondo.</p>
+					<p>Ti permette di stringere amicizie, creare gruppi, condividere esperienze</p>
+					<p>Potrai condividere foto, video e musica!</p>
+					<p>Cosa aspetti? Unisciti a noi, iscriviti, è gratis!</p>
+					
+					<p><a href="#benvenuti">Torna su</a></p>
+                </div>
+                
+				<div class="indice">
+					<h3><a id="iscriversi">Come iscriversi</a></h3>
+					<p>L'iscrizione è una procedura molto semplice e immediata</p>
+					<p>Basta inserire le proprie informazioni personali come:</p>
+					<ul>
+						<li>Nome e cognome</li>
+						<li>Data di nascita</li>
+						<li>Email</li>
+					</ul>
+					<p>e subito potrai trovare tanti amici!
+					</p>
+					<p>Ok, <a href="#">mi iscrivo</a></p>
+					<p><a href="#benvenuti">Torna su</a></p>
+				</div>
+                
+                <div class="indice">
+					<h3><a id="trovaamici">Trovare amici</a></h3>
+					<p>Puoi trovare amici cercando qualsiasi informazione:</p>
+					<ul>
+						<li>Nome e cognome</li>
+						<li>Luogo e data di nascita</li>
+						<li>Email</li>
+						<li>Scuole frequentate</li>
+					</ul>
+					<p><a href="#benvenuti">Torna su</a></p>
+				</div>
+				
+                <div class="indice">
+					<h3><a id="cancellarsi">Come cancellarsi</a></h3>
+					<p>
+					Lavoriamo tutti i giorni per rendere Nerdbook sempre più adatto 
+					alle tue esigenze; se trovi quallche problema nell'uso di Nerdbook
+					segnalacelo.
+					</p>
+					<p>
+					Se invece sei sicuro di volerti cancellare, basta compilare 
+					l'apposito FORM indicando il motivo della cancellazione.
+					</p>
+					<p><a href="#benvenuti">Torna su</a></p>
+                </div>
+				
+                <div class="indice">
+					<h3><a id="faq">Da sapere</a></h3>
+					<p>Attenzione: l'uso di Nerbook è completamente gratuito, tuttavia
+					qualsiasi informazione o oggetto multimenìdiale postato sarà 
+					sottoposto a validazione da parte dei nostri software.<br/>
+					I diritti di copyright dei post e degli oggetti multimediali,
+					una volta validati, saranno di proprietà esclusiva di Nerdbook.<br/>
+					Sono comunque ritenuti non validi e saranno pertanto scartati, contenuti che:
+					offendono il comune senso del pudore; violano le leggi sui diritti di copyright;
+					abbiano una dimensione superiore ai 300 MB.
+					
+					</p>
+					<p><a href="#benvenuti">Torna su</a></p>
+                </div>
+				
+            </div>
+        </div>
+    </body>
+</html>

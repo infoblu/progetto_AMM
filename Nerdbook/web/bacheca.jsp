@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Nerdbook Bacheca</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Riccardo Vacca (Matricola 49313)">
+        <meta name="keywords" content="social network amici incontri messaggi condividere bacheca"> 
+        <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    </head>
+    <body>
+
+			<div id="intestazione">
+				<header>
+					<div id="title">
+						<h1>Bacheca</h1>
+						<h2>Benvenuto nella mia bacheca</h2>
+					</div>
+				</header>
+				<div id="logout">
+				Riccardo Vacca
+				<a href="#">Logout</a>
+				</div>					
+				<nav>
+					<ol>
+						<li><a href="descrizione.html">Descrizione di Nerdbook</a></li>
+						<li><a href="login.html">Login</a></li>
+					</ol>
+				</nav>
+			
+
+			</div>
+			
+
+            <div id="divBody">
+				<div id="ricerca">
+					<div id="formRicerca">
+						<form action="servlet.java" method="post">
+							<div>
+								<h3><label for="nomeUtente">Ricerca</label></h3>
+								<input type="text" name="nomeUtente" id="nomeUtente"><br/>
+								<div class="pulsanti">
+									<button type="submit">Cerca</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="divUtenti">
+						<h3>Persone</h3>
+						<ol>
+							<li><a href="#">Barack Obama</a></li>
+							<li><a href="#">Ken Follett</a></li>
+							<li><a href="#">Jean-Luc Picard</a></li>
+						</ol>										
+					</div>
+					<div id="divGruppi">
+						<h3>Gruppi</h3>
+						<ol>
+							<li><a href="#">Riders</a></li>
+							<li><a href="#">Star Trek</a></li>
+							<li><a href="#">Squash</a></li>
+						</ol>										
+					</div>
+				</div>
+				<div id="divPosts">
+					<div id="divPresentazione">
+                                            <c:if test="${utente.id!=-1}"> 
+						Riccardo Vacca: Curiosisty killed the cat
+                                            </c:if>
+                                            <c:if test="${utente.id==-1}"> 
+						Utente non Loggato
+                                            </c:if>- ${utente.id}
+                                            
+					</div>
+					<div class="post">
+
+						 <h3>
+							Barack Obama
+						 </h3>
+						 <img class="fotoProfilo" alt="Foto del profilo" src="img/barackobama.jpg" />
+						 <p>
+							Hey guys! Vote for me, please! 
+						 </p>
+					</div>
+                    
+            <!--lista dei post-->
+            <div id="posts">
+                <c:forEach var="post" items="${posts}">
+                    <div class="post">
+                        <!--
+                        <c:if test="${post.postType == 'TEXT'}">
+                            <p>${post.content}</p>
+                        </c:if>
+                        <c:if test="${post.postType == 'IMAGE'}">
+                            <img alt="Post con foto" src="${post.content}">
+                        </c:if> -->
+                        <c:>${post.messaggio}</c:>
+                    </div>
+                </c:forEach>                    
+                    
+					<div class="post">
+						 <h3>
+							Ken Follett
+						 </h3>
+						 <img class="fotoProfilo" alt="Foto del profilo" src="img/kenfollett.jpg" />
+						 <p>
+							Now I'm going to tell you my new bestseller
+						 </p>
+						 <img class="landScape" alt="Copertina Bestseller" src="img/copertina_bestseller.jpg" />
+					</div>
+					<div class="post">
+						 <h3>
+							Jean-Luc Picard
+						 </h3>
+						 <img class="fotoProfilo" alt="Foto del profilo" src="img/picard.png" />
+						 <p>
+							Spazio: ultima frontiera. Questi sono i viaggi della 
+							nave stellare Enterprise. La sua missione è quella di 
+							esplorare strani, nuovi mondi, alla ricerca di nuove 
+							forme di vita e di nuove civiltà, per arrivare là dove 
+							nessuno è mai giunto prima. 
+						 </p>
+						 <a class="external" href="https://it.wikipedia.org/wiki/Star_Trek:_The_Next_Generation">Visit USS Enterprise (NCC-1701-D)</a>
+					</div>
+				</div>   
+			</div>
+			
+    </body>
+</html>

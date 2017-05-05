@@ -1,0 +1,484 @@
+/*
+Foglio di stile applicato a tutte le pagine del sito Nerdbook
+*/
+/* 
+    Data creazione: 28/03/2017
+    Autore: Riccardo Vacca - matricola 49313
+    Data ultimo aggiornamento: 11/04/2017
+*/
+
+
+body{
+	background-color: #5db5ff;;
+	font: 14px/20px "Open Sans", Arial, sans-serif;
+    color: #344259;
+}
+
+
+a:link {
+    text-decoration: none;
+    color: #1e56b2;
+}
+a:visited {
+    text-decoration: none;
+    color: #a7211a;
+}
+a:hover{
+    text-decoration: underline;
+    color: #f56616;
+}
+
+h1, h2, h3 {
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    
+}
+
+h1>a:hover,h2>a:hover,h3>a:hover{
+    text-decoration: none;
+    color: #344259;
+}
+
+	header {
+		float: left;		
+		top: 10px;
+		padding-left: 5px;
+		}
+		
+	nav { 
+		top: 10px;
+		height: 60px;
+		text-align:left;
+		padding-left: 5px;
+		padding-right: 5px;
+		
+	}
+	div #logout {
+		float: right;
+		top: 10px;
+		height: 60px;
+		width: 200px;
+		text-align:left;
+		padding-left: 5px;	
+		padding-right: 5px;	
+	}
+
+
+div .post, div #formLogin, div #formProfilo, div .indice  {
+	padding-left: 5px;
+	padding-bottom: 5px;
+    margin-top: 5px;
+	margin-bottom: 5px;
+}
+div #invalidDataWarning {
+    color: red;
+}
+
+div #ricerca {
+	background-color: #97cbff;
+	float: left;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+/* Box dei div principali */
+
+div #ricerca, div .post, div #logout, header, nav , div #formLogin, div #formProfilo, div .indice , div #divPresentazione{
+	
+	background-color: #97cbff;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; /* firefox */
+	-webkit-border-radius: 5px; /* safari, chrome */
+    border-color: #003871;
+	box-shadow: 0 0 5px rgba(0,0,0,.6);
+}
+/* Box dei div principali - FINE - */
+
+
+
+
+#formRicerca  label:after, #formLogin label:after, #formProfilo label:after{
+    content: '\A';
+    white-space: pre;
+}
+
+input:focus {
+	background-color: #ffffce;
+}
+
+form .pulsanti {
+	padding-top:10px;
+}
+
+#divUtenti h3, #divGruppi h3{
+	text-align:center;
+}
+#divUtenti {
+	margin-top:20px;
+}
+#divGruppi ol, #divGruppi li, #divUtenti ol, #divUtenti li{
+    list-style-type: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#titoloLogin {
+	text-align:center;
+}
+
+.landScape {
+	width: 276px;
+	height: 77px;
+}
+
+.fotoProfilo {
+	height:50px;
+}
+
+@media only screen and (min-width: 1024px) {
+	h1 {
+		font: 30px/10px "Open Sans", Arial, sans-serif;;
+		
+	}
+	h2 {
+		font: 14px/14px "Open Sans", Arial, sans-serif;;
+		
+	}
+	h3 {
+		font: 14px/14px "Open Sans", Arial, sans-serif;;
+		
+	}
+
+	nav ol, nav li {
+		list-style-type: none;
+		display: inline-block;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	header {
+		height: 60px;
+		width: 220px;
+	}
+
+	div #logout {
+		float: right;
+		top: 10px;
+		height: 60px;
+		width: 200px;
+		text-align:left;
+		padding-left: 5px;	
+		padding-right: 5px;	
+	}
+	nav {
+		margin-left: 230px;
+		margin-right: 215px;
+	}
+	
+	#divBody {
+		margin-top: 10px;
+		}		
+		
+	div #ricerca {
+    width: 220px;
+	}
+
+	#formRicerca button{
+		width: 200px;
+	}
+	#formRicerca input, #formLogin input, #formProfilo input, #formProfilo textarea{
+		width: 200px;
+	}		
+	
+	div #divPresentazione {
+			width:auto;
+			margin-bottom:5px;
+			margin-top:5px;
+			margin-right:auto;
+			margin-left:0px;
+			padding-left: 5px;
+	}
+	
+	div #divPosts , #formLogin, #formProfilo{
+		margin-top: 10px;
+		margin-left:230px;
+		margin-right:215px;
+		width: auto;
+	}
+
+
+	div #formRicerca{
+		text-align:center;
+		display: inline-block;
+		width:100%;
+		margin-left:auto;
+		margin-right:auto;
+
+	}	
+	
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1024px){
+
+	h1 {
+		font: 20px/10px "Open Sans", Arial, sans-serif;;
+		
+	}
+	h2 {
+		font: 12px/10px "Open Sans", Arial, sans-serif;;
+		
+	}
+	h3 {
+		font: 12px/10px "Open Sans", Arial, sans-serif;;
+		
+	}
+	nav ol, nav li {
+		list-style-type: none;
+		padding-left: 5px;
+		padding-top: 5px;
+	}
+
+	nav {
+		margin-left: 190px;
+		margin-right: auto;
+		height: 120px;
+		width: auto;
+	}
+	
+	header {
+		height: 120px;
+		width: 180px;
+	}
+
+	div #intestazione {
+		height: 60px;
+	}
+	
+	div #ricerca {
+		width: 180px;
+		margin-top: 5px;
+	}
+
+	div #formRicerca{
+		text-align:center;
+		display: inline-block;
+		width:100%;
+		margin-left:auto;
+		margin-right:auto;
+
+	}	
+	
+	#formRicerca button{
+		width: 160px;
+	}
+	
+	#formRicerca input, #formLogin input, #formProfilo input, #formProfilo textarea{
+		width: 160px;
+	}		
+	
+	div #divPosts , #formLogin, #formProfilo{
+		margin-right: auto;
+		width: auto;	
+		margin-top: 10px;
+		margin-left:190px;
+	}
+
+		
+	div #logout {
+		margin-top:5px;
+		clear: both;
+		display: block;
+		float: left;
+		height: 20px;
+		width: 180px;
+		padding-right:0px;
+		padding-bottom:0px;
+	}
+
+	div #divPresentazione {
+			margin-bottom:5px;
+			margin-top:10px;
+			margin-right:0px;
+			margin-left:0px;
+			padding-left:5px;
+			padding-right:5px;
+	}
+
+	#divBody {
+		clear: both;
+		margin-top: 20px;
+		}
+
+}
+ 
+ @media only screen and (max-width: 480px){
+ h1 {
+		font: 20px/10px "Open Sans", Arial, sans-serif;;
+		
+	}
+	h2 {
+		font: 12px/10px "Open Sans", Arial, sans-serif;;
+		
+	}
+	h3 {
+		font: 12px/10px "Open Sans", Arial, sans-serif;;
+		
+	}
+	nav ol, nav li {
+		list-style-type: none;
+		padding-left: 5px;
+		padding-top: 5px;
+	}
+	div #intestazione {
+		height: 60px;
+		margin-right:5px;
+	}
+	nav {
+
+		clear: both;
+		display: block;
+		float: left;
+		padding-bottom: 10px;
+		padding-right: 0px;
+		margin-left: 0px;
+		margin-right: 5px;
+		margin-top: 10px;
+		height: 120px;
+		width: 100%;
+	}
+	
+	header {
+		height: 60px;
+		width: 100%;
+		margin-right:5px;
+	}
+
+	div #intestazione {
+		height: 60px;
+		margin-right:5px;
+	}
+	
+	div #ricerca {
+		clear: both;
+		display: block;
+		float: left;
+		margin-right:5px;
+		margin-top: 10px;
+		width: 100%;
+	}
+
+	div #divPresentazione {
+			margin-bottom:5px;
+			margin-top:5px;
+			margin-right:0px;
+			margin-left:0px;
+			padding-left:5px;
+			width:auto;
+			
+	}
+	
+	div #formRicerca{
+		text-align:center;
+		display: inline-block;
+		width:100%;
+		margin-left:auto;
+		margin-right:5px;;
+
+	}	
+	
+	#formRicerca button{
+		width: 160px;
+	}
+	
+	#formRicerca input, #formLogin input, #formProfilo input, #formProfilo textarea{
+		width: 160px;
+	}		
+	
+	div #divPosts , #formLogin, #formProfilo{
+		clear: both;
+		display: block;
+		float: left;
+		
+		margin-right: 5px;
+		width: 100%;	
+		margin-top: 10px;
+		margin-left: 0px;
+	}
+
+		
+	div #logout {
+		margin-top:10px;
+		margin-right:auto;
+		clear: both;
+		display: block;
+		float: left;
+		height: 30px;
+		width: 180px;
+	}
+	#divBody {
+		clear: both;
+		margin-top: 10px;
+		}
+	div .indice {
+		clear: both;
+		display: block;
+		float: left;
+		padding-bottom: 10px;
+		padding-right: 0px;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 10px;
+		width: 100%;				
+	}
+
+}
+ 
+div #divPresentazione:before{
+	content: url("img/utenteRid.jpg");
+}
+
+div  #divUtenti li:before{
+	content: url("img/utenteRid.jpg");	
+}
+
+div  #divGruppi li:before{
+	content: url("img/groupRid.jpg");	
+}
+
+div  #titoloLogin h3:before{
+	content: url("img/chiave.jpg");	
+}
+
+ 
+ @media only screen and (min-width: 1024px) {
+ 
+	 div #logout:before {
+
+		content: url("img/utente.jpg");
+	 } 
+ 
+ }
+ 
+ @media only screen and (min-width: 480px) and (max-width: 1024px){
+	 div #logout:before {
+
+		content: url("img/utenteRid.jpg");
+	 } 
+	 
+ }
+ 
+ @media only screen and (max-width: 480px){
+	 div #logout:before {
+
+		content: url("img/utenteRid.jpg");
+	 } 
+ }
+
+ 
