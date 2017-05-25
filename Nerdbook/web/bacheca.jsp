@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -16,114 +18,53 @@
 						<h1>Bacheca</h1>
 						<h2>Benvenuto nella mia bacheca</h2>
 					</div>
-				</header>
-				<div id="logout">
-				Riccardo Vacca
-				<a href="#">Logout</a>
-				</div>					
-				<nav>
-					<ol>
-						<li><a href="descrizione.html">Descrizione di Nerdbook</a></li>
-						<li><a href="login.html">Login</a></li>
-					</ol>
-				</nav>
-			
-
+				</header>				                                    
+				<%@include file="nav.jsp" %>
 			</div>
 			
 
             <div id="divBody">
-				<div id="ricerca">
-					<div id="formRicerca">
-						<form action="servlet.java" method="post">
-							<div>
-								<h3><label for="nomeUtente">Ricerca</label></h3>
-								<input type="text" name="nomeUtente" id="nomeUtente"><br/>
-								<div class="pulsanti">
-									<button type="submit">Cerca</button>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div id="divUtenti">
-						<h3>Persone</h3>
-						<ol>
-							<li><a href="#">Barack Obama</a></li>
-							<li><a href="#">Ken Follett</a></li>
-							<li><a href="#">Jean-Luc Picard</a></li>
-						</ol>										
-					</div>
-					<div id="divGruppi">
-						<h3>Gruppi</h3>
-						<ol>
-							<li><a href="#">Riders</a></li>
-							<li><a href="#">Star Trek</a></li>
-							<li><a href="#">Squash</a></li>
-						</ol>										
-					</div>
-				</div>
-				<div id="divPosts">
-					<div id="divPresentazione">
-                                            <c:if test="${utente.id!=-1}"> 
-						Riccardo Vacca: Curiosisty killed the cat
-                                            </c:if>
-                                            <c:if test="${utente.id==-1}"> 
-						Utente non Loggato
-                                            </c:if>- ${utente.id}
-                                            
-					</div>
-					<div class="post">
+                <%@include file="ricerca.jsp" %>
+                <div id="divPosts">
 
-						 <h3>
-							Barack Obama
-						 </h3>
-						 <img class="fotoProfilo" alt="Foto del profilo" src="img/barackobama.jpg" />
-						 <p>
-							Hey guys! Vote for me, please! 
-						 </p>
-					</div>
-                    
-            <!--lista dei post-->
-            <div id="posts">
-                <c:forEach var="post" items="${posts}">
-                    <div class="post">
-                        <!--
-                        <c:if test="${post.postType == 'TEXT'}">
-                            <p>${post.content}</p>
+                    <div id="divPresentazione">
+                        <c:if test="${utente.id!=null}">
+                            <div id="divNewPost">
+                                <a href="nuovopost.jsp?usr=${utente.id}">Nuovo Post</a>                                
+                            </div>
+                            <h3>${utente.nome} ${utente.cognome}</h3>
+
+                            <c:if test="${utente.id!=-1}"> 
+                                <c:if test="${utente.urlFotoProfilo!=null}"> 
+                                    <img class="fotoProfilo" alt="Foto del profilo" src="${utente.urlFotoProfilo}" />
+                                </c:if>                                               
+                                <c:if test="${utente.presentazione!=''}"> 
+                                    <p>"${utente.presentazione}"</p>
+                                </c:if>
+                            </c:if>
+
                         </c:if>
-                        <c:if test="${post.postType == 'IMAGE'}">
-                            <img alt="Post con foto" src="${post.content}">
-                        </c:if> -->
-                        <c:>${post.messaggio}</c:>
+                        <c:if test="${utente.id==null}">
+                            <p>Attenzione: Questi contenuti sono visibili solo dagli utenti registrati.</p>
+                            <p> Se sei un utente registrato <a href="Login">Accedi</a>, altrimenti <a href="Profilo">Iscriviti</a>
+                        </c:if>
                     </div>
-                </c:forEach>                    
-                    
-					<div class="post">
-						 <h3>
-							Ken Follett
-						 </h3>
-						 <img class="fotoProfilo" alt="Foto del profilo" src="img/kenfollett.jpg" />
-						 <p>
-							Now I'm going to tell you my new bestseller
-						 </p>
-						 <img class="landScape" alt="Copertina Bestseller" src="img/copertina_bestseller.jpg" />
-					</div>
-					<div class="post">
-						 <h3>
-							Jean-Luc Picard
-						 </h3>
-						 <img class="fotoProfilo" alt="Foto del profilo" src="img/picard.png" />
-						 <p>
-							Spazio: ultima frontiera. Questi sono i viaggi della 
-							nave stellare Enterprise. La sua missione è quella di 
-							esplorare strani, nuovi mondi, alla ricerca di nuove 
-							forme di vita e di nuove civiltà, per arrivare là dove 
-							nessuno è mai giunto prima. 
-						 </p>
-						 <a class="external" href="https://it.wikipedia.org/wiki/Star_Trek:_The_Next_Generation">Visit USS Enterprise (NCC-1701-D)</a>
-					</div>
-				</div>   
-			</div>
-			
+
+                    <!--lista dei post-->
+                    <div id="posts">
+                        <c:forEach var="post" items="${posts}">
+                            <div class="post">
+                                <p>${post.messaggio}</p>
+                                <c:if test="${post.tipoPost == 2}">
+                                    <img alt="Post con foto" src="${post.url}">
+                                </c:if>
+                                <c:if test="${post.tipoPost == 3}">
+                                    <a href="${post.url}">${post.url}</a>
+                                </c:if>
+                            </div>
+                        </c:forEach>
+                    </div>   
+                </div>
+            </div>
     </body>
 </html>

@@ -1,0 +1,81 @@
+/*
+* File: SchemaEntità
+* Autore: Riccardo Vacca
+* Data Ultimo Aggiornamento: 2017-05-09
+* Decrizione: Schema del dominio dell'Applicazione WEB "Nerdbook"
+*/
+
+/*
+* L'applicazione consiste in un piccolo social network.
+* Sono previsti 2 tupi di utenti (Utenti Registrati e l'Amministratore) ed è possibile stringere amicizia, creare e gestire gruppi, scrivere nella bacheca 3 tipi di post (Solo Testo, Testo+Immagine e Testo+Link)
+* Anche i Gruppi hanno una bacheca: ogni volta che u post viene pubblicati su un gruppo, questo viene replicato anche nella bacheca di tutti gli appartenenti al gruppo.
+* Un utente regiustrato si iscrive spontaneamente ad un gruppo
+*/
+
+Entità:
+UtentiRegistrati: tutti i dati degli utenti registrati
+postType: i tipi di post accettati: TEXT, IMAGE, URL
+posts: tutti i post di tutti gli utenti
+Amici: tutte le relazioni d'amicizia fra gli utenti
+Gruppi: i dati dei gruppi
+AmiciGruppi: gli tenti che fanno parte dei gruppi
+PostGruppi: i post inseriti dagli utenti nei gruppi.
+
+Relazioni:
+
+UtentiRegistrati (molti-molti) Amici: ogni Utente può avere molti amici e viceversa
+UtentiRegistrati (1-molti) post: ogni utente può scrivere molti post 
+posts (molti-1) postType: ogni post può essere di un tipo
+
+
+Tabella: UtentiRegistrati, con i dati degli utenti che si sono regisitrati
+Attributi:
+id, intero con autoincremento (chiave primaria)
+amministratore, booleano vero per l'amministratore, falso per gli utenti registrati
+nome
+cognome
+urlFotoProfilo
+presentazione, una frase di presentazione
+dataNascita
+password
+
+Tabella: postType, contenente i tipi di Post previsti
+Attributi:
+id, intero con autoincremento (chiave primaria)
+tipoPost ('TESTO', 'IMAGE', oppure 'URL')
+
+Tabella: posts, contenente tutti i post degli utenti registrati
+Attributi:
+id, intero con autoincremento (chiave primaria)
+messaggio,
+tipoPost, chiave esterna in relazione molti a uno con postType(id)
+url, eventuale link a immagine o link
+autore, chiave esterna  in relazione molti a uno con utentiRegistrati(id)
+destinatario (cioè in quale bacheca comparirà il POST), chiave esterna  in relazione molti a uno con utentiRegistrati(id)
+
+Tabella: Amici
+Attributi:
+amico1, chiave esterna in relazione uno a uno con utentiRegistrati(id)
+amico2, chiave esterna in relazione uno a uno con utentiRegistrati(id)
+La chiave primaria è costituita dalla coppia (amico1,amico2), ciò significa che la riga A,B è diversa da B,A quindi quando l'utente A stringe amicizia con l'utente B, verranno inserite due istanze (A,B e B,A)
+
+Tabella: Gruppi
+Attributi:
+id, intero con autoincremento (chiave primaria)
+proprietario, chiave esterna in relazione molti a uno con utentiRegistrati(id)
+nome 
+
+Tabella AmiciGruppi
+Attributi:
+gruppo, chiave esterna in relazione uno a uno con Gruppi(id)
+amico, chiave esterna in relazione uno a uno con utentiRegistrati(id)
+La chiave primaria è costituita dalla coppia (gruppo,amico)
+
+
+Tabella: PostGruppi
+Attributi:
+id, intero con autoincremento (chiave primaria)
+messaggio
+tipoPost chiave esterna in relazione molti a uno con postType(id)
+url, eventuale link a immagine o link
+autore chiave esterna in relazione molti a uno con utentiRegistrati(id)

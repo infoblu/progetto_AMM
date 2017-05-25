@@ -20,8 +20,8 @@
         </header>
         <nav>
             <ol>
-                <li><a href="#">Iscriviti, è gratis!</a></li>
-                <li>Già iscritto? <a href="login.jsp">Accedi</a></li>
+                <li><a href="Profilo">Iscriviti, è gratis!</a></li>
+                <li>Già iscritto? <a href="Login">Accedi</a></li>
                 <li><a href="#">Contatti</a></li>
                 <li><a href="#">Segnala un problema</a></li>
             </ol>
@@ -58,7 +58,7 @@
 					</ul>
 					<p>e subito potrai trovare tanti amici!
 					</p>
-					<p>Ok, <a href="#">mi iscrivo</a></p>
+					<p>Ok, <a href="Profilo">mi iscrivo</a></p>
 					<p><a href="#benvenuti">Torna su</a></p>
 				</div>
                 

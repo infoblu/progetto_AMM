@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nerdbook;
 
 import classi.UtenteRegistrato;
@@ -36,10 +31,7 @@ public class Bacheca extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-
-
-  
+                
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession(false);
@@ -47,32 +39,37 @@ public class Bacheca extends HttpServlet {
         //se la sessione esiste ed esiste anche l'attributo loggedIn impostato a true
         if(session!=null && 
            session.getAttribute("loggedIn")!=null &&
-           session.getAttribute("loggedIn").equals(true)){
-        
-
-             
+           session.getAttribute("loggedIn").equals(true)){              
             //controllo se è impostato il parametro get "user" che mi consente
             //di visualizzare una bacheca di uno specifico utente.
             String user = request.getParameter("user");
             request.setAttribute("utente", user);
             
             int userID;
-
-            if(user != null){
+            
+            if(user != null){                
                 userID = Integer.parseInt(user);
-            } else {
+            } else {                
                 Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
                 userID = loggedUserID;
             } 
-
+            
             UtenteRegistrato utente = UtenteRegistratoFactory.getInstance().getUtenteRegistratoById(userID);
-
+            
             if(utente != null){
+                
                 request.setAttribute("utente", utente);
+                request.setAttribute("nomeUtente",utente.getNome());
+                ArrayList<Post> posts = PostFactory.getInstance().getPostListById(userID);
+                request.setAttribute("posts", posts);
 
-                ArrayList<Post> posts = PostFactory.getInstance().getPostList(utente);
-                // request.setAttribute("posts", posts);
-
+           ArrayList<UtenteRegistrato> listaUtenti = UtenteRegistratoFactory.getInstance().getUserList();
+           ArrayList<Gruppo> listaGruppi = GruppoFactory.getInstance().getGroupList();
+           
+            
+           request.setAttribute("listaUtenti", listaUtenti);
+           request.setAttribute("listaGruppi", listaGruppi);
+                
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
             } else {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -80,20 +77,11 @@ public class Bacheca extends HttpServlet {
  
             }
         else{
+            request.setAttribute("loggedIn", false);
             request.getRequestDispatcher("Login").forward(request, response);
         }       
-        
-        // request.getRequestDispatcher("bacheca.jsp").forward(request, response);    
-        
-        /*
-
-            userID=0;
-            
-
-    */
-        
-    
-        }
+           
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

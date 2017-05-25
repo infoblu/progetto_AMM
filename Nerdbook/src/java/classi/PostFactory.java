@@ -6,56 +6,40 @@
 package classi;
 
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 /**
  *
  * @author VCCRCR72A28B354P
  */
 public class PostFactory {
+    
+    private String connectionString;
     //Pattern Design Singleton
     private static PostFactory singleton;
 
+    private ArrayList<Post> listaPost = new ArrayList<Post>();
+    
     public static PostFactory getInstance() {
         if (singleton == null) {
             singleton = new PostFactory();
         }
         return singleton;
     }
-
-    private ArrayList<Post> listaPost = new ArrayList<Post>();
-
-    private PostFactory() {
-        //Creazione post
-
-        //Post 0
-        Post post0 = new Post();
-        post0.setId(0);
-        post0.setUser(UtenteRegistratoFactory.getInstance().getUtenteRegistratoById(0));
-        // post0.setGroup(null);
-        post0.setMessaggio("Messaggio 0");
-        post0.setUrlLink("");
-        post0.setUrlImmagine("");
-        //Post 1
-        Post post1 = new Post();
-        post1.setId(1);
-        post1.setUser(UtenteRegistratoFactory.getInstance().getUtenteRegistratoById(1));
-        // post1.setGroup(null);
-        post1.setMessaggio("Ecco il mio messaggio nr.1");
-        post1.setUrlLink("");
-        post1.setUrlImmagine("");        
-        //Post 2
-        Post post2 = new Post();
-        post2.setId(2);
-        post2.setUser(UtenteRegistratoFactory.getInstance().getUtenteRegistratoById(2));
-        // post2.setGroup(null);
-        post2.setMessaggio("Questo è il messaggio nr. 2");
-        post2.setUrlLink("");
-        post2.setUrlImmagine(""); 
-
-        listaPost.add(post0);
-        listaPost.add(post1);
-        listaPost.add(post2);
+    
+    public void setConnectionString(String s) {
+            this.connectionString=s;
     }
+
+    public String getConnectionString() {
+            return this.connectionString;
+    }
+
 
     public Post getPostById(int id) {
         for (Post post : this.listaPost) {
@@ -68,19 +52,62 @@ public class PostFactory {
     
 
     // restituisce tutti gli oggetti Post per un determinato utente
-    public ArrayList<Post> getPostList(UtenteRegistrato usr) {
+    public ArrayList<Post> getPostListById(int idAutore) {
         
         ArrayList<Post> listaPost = new ArrayList<Post>();
 
-        for (Post post : this.listaPost) {
-            if (post.getUser().equals(usr)) {
-                listaPost.add(post);
+        try {
+            Connection conn = DriverManager.getConnection(connectionString,"administrator","123");
+            String query="select id,messaggio,tipoPost,url,autore,destinatario from posts where autore = ? order by id ";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1,idAutore);
+            ResultSet res=stmt.executeQuery();
+            
+            while (res.next()) {                    
+                    Post current= new Post();
+                    current.setId(res.getInt("id"));
+                    current.setMessaggio(res.getString("messaggio"));
+                    current.setTipoPost(res.getInt("tipoPost"));
+                    current.setUrl(res.getString("url")); 
+                    current.setIdAutore(res.getInt("autore"));
+                    current.setIdDestinatario(res.getInt("destinatario"));
+                    listaPost.add(current);
             }
-        }
+            
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }      
         return listaPost;
     }
     
+    // Salva il Post nel Database
+    public int setPost(Post post) {
+        int res=0;
+        try {
+            Connection conn = DriverManager.getConnection(connectionString,"administrator","123");
+            String query="insert into posts (id,messaggio,tipoPost,url,autore,destinatario) values (default, ?, ?, ?, ?, ?) ";
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setString(1,post.getMessaggio());
+            stmt.setInt(2,post.getTipoPost());
+            stmt.setString(3,post.getUrl());
+            stmt.setInt(4,post.getIdAutore());            
+            stmt.setInt(5,post.getIdDestinatario());
+            
+            res=stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();            
+        }
+
+        return res;
+    }
     
+
     // ArrayList<Post> getPostList(Gruppo gr) che restituisce tutti gli oggetti Post per un determinato gruppo    
     
     

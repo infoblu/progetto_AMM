@@ -6,12 +6,21 @@
 package classi;
 
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  *
  * @author VCCRCR72A28B354P
  */
 public class GruppoFactory {
+    
+    private String connectionString;
     //Pattern Design Singleton
     private static GruppoFactory singleton;
 
@@ -22,32 +31,17 @@ public class GruppoFactory {
         return singleton;
     }
 
+    public void setConnectionString(String s) {
+	this.connectionString=s;
+    }
+
+    public String getConnectionString() {
+            return this.connectionString;
+    }
     private ArrayList<Gruppo> listaGruppi = new ArrayList<Gruppo>();
 
     private GruppoFactory() {
-        //Creazione gruppi
 
-        //gruppo 0
-        Gruppo gruppo0 = new Gruppo();
-        gruppo0.setId(0);
-        gruppo0.setNomeGruppo("Riders");
-        gruppo0.setIdProprietario(1);
-        //gruppo 0
-        Gruppo gruppo1 = new Gruppo();
-        gruppo0.setId(1);
-        gruppo0.setNomeGruppo("Squash");
-        gruppo0.setIdProprietario(2);
-        //gruppo 0
-        Gruppo gruppo2 = new Gruppo();
-        gruppo0.setId(2);
-        gruppo0.setNomeGruppo("Star Trek");
-        gruppo0.setIdProprietario(3);
-        
- 
-
-        listaGruppi.add(gruppo0);
-        listaGruppi.add(gruppo1);
-        listaGruppi.add(gruppo2);
     }
 
     public Gruppo getGruppiById(int id) {
@@ -67,4 +61,34 @@ public class GruppoFactory {
         }
         return -1;
     }    
+
+
+    // restituisce tutti gli oggetti Gruppo
+    public ArrayList<Gruppo> getGroupList() {
+        
+        ArrayList<Gruppo> listaGruppi = new ArrayList<Gruppo>();
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString,"administrator","123");
+            String query="select id,nome,proprietario from Gruppi order by nome ";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet res=stmt.executeQuery();
+            
+            while (res.next()) {                    
+                    Gruppo current= new Gruppo();
+                    current.setId(res.getInt("id"));
+                    current.setNomeGruppo(res.getString("nome"));
+                    current.setIdProprietario(res.getInt("proprietario"));
+                    listaGruppi.add(current);
+            }
+            
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }      
+        return listaGruppi;
+    }   
+
 }

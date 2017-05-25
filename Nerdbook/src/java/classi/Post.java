@@ -10,68 +10,70 @@ package classi;
  * @author Rik
  */
 public class Post {
-    private int id;
-    private UtenteRegistrato user;
-    // private Gruppo group;
+        
+    private int id;    
+    private int tipoPost;    
     private String messaggio;
-    private String urlLink;
-    private String urlImmagine;
+    private int idAutore;
+    private int idDestinatario;
+    private String url;
+
 
     public Post() {
-            id=0;
-            user=null;
-            // group=null;
-            messaggio="";
-            urlLink="";
-            urlImmagine="";
+        id=0;
+        tipoPost=1;    
+        messaggio="";
+        idAutore=-1;
+        idDestinatario=-1;
+        url="";
     }
 
     public int getId() {
         return id;
     }
 
-    public UtenteRegistrato getUser() {
-        return user;
-    }
-/*
-    public Gruppo getGroup() {
-        return group;
-    }
-*/
     public String getMessaggio() {
         return messaggio;
     }
 
-    public String getUrlLink() {
-        return urlLink;
+    public int getTipoPost() {
+        return tipoPost;
+    }
+    
+    public int getIdAutore() {
+        return idAutore;
     }
 
-    public String getUrlImmagine() {
-        return urlImmagine;
+    public int getIdDestinatario() {
+        return idDestinatario;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setUser(UtenteRegistrato user) {
-        this.user = user;
+    public void setTipoPost(int tipoPost) {
+        this.tipoPost = tipoPost;
     }
-/*
-    public void setGroup(Gruppo group) {
-        this.group = group;
-    }
-*/
+
     public void setMessaggio(String messaggio) {
         this.messaggio = messaggio;
     }
 
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
+    public void setIdAutore(int idAutore) {
+        this.idAutore = idAutore;
     }
 
-    public void setUrlImmagine(String urlImmagine) {
-        this.urlImmagine = urlImmagine;
+    public void setIdDestinatario(int idDestinatario) {
+        this.idDestinatario = idDestinatario;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 }

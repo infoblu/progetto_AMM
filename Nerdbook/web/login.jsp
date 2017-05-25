@@ -18,31 +18,33 @@
 			</div>
             
         </header>
-        <nav>
-            <ol>
-                <li><a href="descrizione.html">Descrizione di Nerdbook</a></li>
-                <li><a href="profilo.html">Profilo</a></li>
-                <li><a href="bacheca.html">Bacheca</a></li>
-            </ol>
-        </nav>
-    
+        <%@include file="nav.jsp" %>
+
         <div id="divBody">
             <div id="formLogin">
                 <form action="Login" method="post">
                     <div>
-                        <div id="titoloLogin"><h3>Nerdbook</h3></div>
-                        <c:if test="${invalidData == true}">
-                            <div id="invalidDataWarning">Attenzione: Nome utente o password errati.</div>
+                        <div id="titoloLogin"><h3>Nerdbook</h3></div>                        
+                        <c:if test="${loggedIn == true}">
+                            <div ><p>Attenzione: Utente già Loggato...</p>
+                                Effettua il <a href="Login?logout=true">Logout</a>, oppure vai alla <a href="Bacheca">Bacheca</a>
+                            </div>
+                            
                         </c:if>
-                        <label for="nomeUtente">Nome utente</label>
-                        <input type="text" name="nomeUtente" id="nomeUtente"><br/>
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password">
-						<div class="pulsanti">
-							<button type="submit">Login</button>
-							<button type="reset">Reset</button>
-						</div>
-                    </div>
+                        <c:if test="${loggedIn == false or loggedIn==null}">
+                            <c:if test="${invalidData == true}">
+                                <div id="invalidDataWarning">Attenzione: Nome utente o password errati.</div>
+                            </c:if>
+                            <label for="nomeUtente">Nome utente</label>
+                            <input type="text" name="nomeUtente" id="nomeUtente"><br/>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password">
+                                                    <div class="pulsanti">
+                                                            <button type="submit">Login</button>
+                                                            <button type="reset">Reset</button>
+                                                    </div>
+                        </c:if>
+                        </div>
                 </form>
             </div>
         </div>    

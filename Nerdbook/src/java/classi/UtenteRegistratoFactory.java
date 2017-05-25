@@ -5,7 +5,14 @@
  */
 package classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Date;
+
 
 /**
  *
@@ -13,6 +20,7 @@ import java.util.ArrayList;
  */
 public class UtenteRegistratoFactory {
 
+    private String connectionString;
     //Pattern Design Singleton
     private static UtenteRegistratoFactory singleton;
 
@@ -22,90 +30,108 @@ public class UtenteRegistratoFactory {
         }
         return singleton;
     }
+    public void setConnectionString(String s) {
+            this.connectionString=s;
+    }
 
+    public String getConnectionString() {
+            return this.connectionString;
+    }
     private ArrayList<UtenteRegistrato> listaUtentiRegistrati = new ArrayList<UtenteRegistrato>();
 
     private UtenteRegistratoFactory() {
-        //Creazione utenti registrati
-
-        //utente 0
-        UtenteRegistrato user0 = new UtenteRegistrato();
-        user0.setId(0);
-        user0.setAmministratore(true);
-        user0.setNome("Riccardo");
-        user0.setCognome("Vacca");
-        user0.setUrlFotoProfilo("/img/vacca.jpg");
-        user0.setPresentazione("Sono l'amministratore");
-        user0.setDataNascita("28/01/1972");
-        user0.setPassword("123");        
         
-        //utente 1
-        UtenteRegistrato user1 = new UtenteRegistrato();
-        user1.setId(1);
-        user1.setAmministratore(false);
-        user1.setNome("Ken");
-        user1.setCognome("Follet");
-        user1.setUrlFotoProfilo("/img/kenfollett.jpg");
-        user1.setPresentazione("Buongiorno, leggete i miei libri");
-        user1.setDataNascita("01/03/1950");
-        user1.setPassword("123");
-        
-        //utente 2
-        UtenteRegistrato user2 = new UtenteRegistrato();
-        user2.setId(2);
-        user2.setAmministratore(false);
-        user2.setNome("Barack");
-        user2.setCognome("Obama");
-        user2.setUrlFotoProfilo("/img/barackobama.jpg");
-        user2.setPresentazione("Vote for me!!!");
-        user2.setDataNascita("05/04/1963");
-        user2.setPassword("123");
-        
-        //utente 3
-        UtenteRegistrato user3 = new UtenteRegistrato();
-        user3.setId(3);
-        user3.setAmministratore(false);
-        user3.setNome("Jean Luc");
-        user3.setCognome("Picard");
-        user3.setUrlFotoProfilo("/M3/img/picard.png");
-        user3.setPresentazione("Engage!");
-        user3.setDataNascita("23/11/1953");
-        user3.setPassword("123");
-        
-        //utente 4
-        UtenteRegistrato user4 = new UtenteRegistrato();
-        user4.setId(4);
-        user4.setAmministratore(false);
-        user4.setNome("incompleto");
-        user4.setCognome("");
-        user4.setUrlFotoProfilo("");
-        user4.setPresentazione("");
-        user4.setDataNascita("");
-        user4.setPassword("");
-        
-        listaUtentiRegistrati.add(user0);
-        listaUtentiRegistrati.add(user1);
-        listaUtentiRegistrati.add(user2);
-        listaUtentiRegistrati.add(user3);
-        listaUtentiRegistrati.add(user4);
     }
 
     public UtenteRegistrato getUtenteRegistratoById(int id) {
-        for (UtenteRegistrato user : this.listaUtentiRegistrati) {
-            if (user.getId() == id) {
-                return user;
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionString,"administrator","123");
+            String query="select id,amministratore,nome,cognome,urlFotoProfilo,presentazione,dataNascita,password, CAST (dataNascita as varchar(10)) as sDataNascita from UtentiRegistrati where id=?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1,id);
+            ResultSet res=stmt.executeQuery();
+            if (res.next()) {
+                    UtenteRegistrato current= new UtenteRegistrato();
+                    current.setId(res.getInt("id"));
+                    current.setAmministratore(res.getBoolean("amministratore"));
+                    current.setNome(res.getString("nome"));
+                    current.setCognome(res.getString("cognome")); 
+                    current.setUrlFotoProfilo(res.getString("urlFotoProfilo"));
+                    current.setPresentazione(res.getString("presentazione"));
+                    current.setDataNascita(res.getString("sDataNascita"));
+                    current.setPassword(res.getString("password"));
+                    stmt.close();
+                    conn.close();
+                    return current;
             }
-        }
+                    stmt.close();
+                    conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }      
         return null;
     }
     
     public int getIdByUserAndPassword(String nome, String password){
-        for(UtenteRegistrato user : this.listaUtentiRegistrati){
-            if(user.getNome().equals(nome) && user.getPassword().equals(password)){
-                return user.getId();
+
+try {
+            Connection conn = DriverManager.getConnection(connectionString,"administrator","123");            
+            String query="select * from UtentiRegistrati where nome= ? and password = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1,nome);
+            stmt.setString(2,password);
+            ResultSet res=stmt.executeQuery();
+            if (res.next()) {
+                    int id=res.getInt("id");
+                    stmt.close();
+                    conn.close();
+                    return id;
             }
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return -1;
     }
+
+    // restituisce tutti gli oggetti UtenteRegistrato
+    public ArrayList<UtenteRegistrato> getUserList() {
+        
+        ArrayList<UtenteRegistrato> listaUtenti = new ArrayList<UtenteRegistrato>();
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString,"administrator","123");
+            String query="select id,amministratore,nome,cognome,urlFotoProfilo,presentazione, CAST (dataNascita as varchar(10)) as sDataNascita from UtentiRegistrati order by nome ";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet res=stmt.executeQuery();
+            
+            while (res.next()) {                    
+                    UtenteRegistrato current= new UtenteRegistrato();
+                    current.setId(res.getInt("id"));
+                    current.setAmministratore(Int2Bool(res.getInt("Amministratore")));
+                    current.setNome(res.getString("nome"));
+                    current.setCognome(res.getString("cognome"));
+                    current.setUrlFotoProfilo(res.getString("urlfotoprofilo"));
+                    current.setDataNascita("sDataNascita");
+                    listaUtenti.add(current);
+            }
+            
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }      
+        return listaUtenti;
+    }    
+    
+     public Boolean CompleteProfile(UtenteRegistrato utente) {
+        return !(utente.getNome().equals("") || utente.getCognome().equals("") || utente.getUrlFotoProfilo().equals("") || utente.getPresentazione().equals("")); 
+     }
+public Boolean Int2Bool(int b) {return (b==0 ? true : false);}
+
 }
 

@@ -8,13 +8,47 @@
         <servlet-name>Bacheca</servlet-name>
         <servlet-class>nerdbook.Bacheca</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Profilo</servlet-name>
+        <servlet-class>nerdbook.Profilo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Iscrizione</servlet-name>
+        <servlet-class>nerdbook.Iscrizione</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NuovoPost</servlet-name>
+        <servlet-class>nerdbook.NuovoPost</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Ricerca</servlet-name>
+        <servlet-class>nerdbook.Ricerca</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Iscrizione</servlet-name>
+        <url-pattern>/Iscrizione</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Bacheca</servlet-name>
+        <url-pattern>/Bacheca.jsp</url-pattern>
+        <url-pattern>/Bacheca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Profilo</servlet-name>
+        <url-pattern>/Profilo.jsp</url-pattern>
+        <url-pattern>/Profilo</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Bacheca</servlet-name>
-        <url-pattern>/Bacheca</url-pattern>
+        <servlet-name>NuovoPost</servlet-name>
+        <url-pattern>/NuovoPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ricerca</servlet-name>
+        <url-pattern>/Ricerca</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
