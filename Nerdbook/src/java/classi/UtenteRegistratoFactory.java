@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Date;
 
 
 /**
@@ -43,7 +42,7 @@ public class UtenteRegistratoFactory {
         
     }
 
-    public UtenteRegistrato getUtenteRegistratoById(int id) {
+    public UtenteRegistrato getUtenteRegistratoById(int id){
         
         try {
             Connection conn = DriverManager.getConnection(connectionString,"administrator","123");
@@ -70,6 +69,7 @@ public class UtenteRegistratoFactory {
         } catch (SQLException e) {
             e.printStackTrace();
         }      
+
         return null;
     }
     
@@ -127,6 +127,40 @@ try {
         }      
         return listaUtenti;
     }    
+
+// restituisce tutti gli oggetti UtenteRegistrato
+    public ArrayList<UtenteRegistrato> getUserList(String stringaRicerca) {
+        
+        ArrayList<UtenteRegistrato> listaUtenti = new ArrayList<UtenteRegistrato>();
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString,"administrator","123");
+            String query="select id,amministratore,nome,cognome,urlFotoProfilo,presentazione, "
+                    + "CAST (dataNascita as varchar(10)) as sDataNascita from UtentiRegistrati "
+                    + "where nome like '%" + stringaRicerca + "%' order by nome ";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet res=stmt.executeQuery();
+            
+            
+            while (res.next()) {                    
+                    UtenteRegistrato current= new UtenteRegistrato();
+                    current.setId(res.getInt("id"));
+                    current.setAmministratore(Int2Bool(res.getInt("Amministratore")));
+                    current.setNome(res.getString("nome"));
+                    current.setCognome(res.getString("cognome"));
+                    current.setUrlFotoProfilo(res.getString("urlfotoprofilo"));
+                    current.setDataNascita("sDataNascita");
+                    listaUtenti.add(current);
+            }
+            
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }      
+        return listaUtenti;
+    }
     
      public Boolean CompleteProfile(UtenteRegistrato utente) {
         return !(utente.getNome().equals("") || utente.getCognome().equals("") || utente.getUrlFotoProfilo().equals("") || utente.getPresentazione().equals("")); 

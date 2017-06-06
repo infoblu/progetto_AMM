@@ -1,9 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/javascript.js"></script>
 <div id="ricerca">
         <div id="formRicerca">
-                <form action="servlet.java" method="post">
+                <form action="" method="post">
                         <div>
                                 <h3><label for="nomeUtente">Ricerca</label></h3>
                                 <input type="text" name="nomeUtente" id="nomeUtente"><br/>
@@ -16,7 +20,7 @@
         <div id="divUtenti">
                 <h3>Persone</h3>
                 <!--lista degli Utenti -->
-                <ol>
+                <ol id="olUtenti">
                     <c:forEach var="utenti" items="${listaUtenti}">
                         <li><a href="Bacheca?user=${utenti.id}">${utenti.nome}</a></li>
                     </c:forEach>    

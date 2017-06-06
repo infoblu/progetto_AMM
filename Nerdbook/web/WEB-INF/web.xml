@@ -24,6 +24,10 @@
         <servlet-name>Ricerca</servlet-name>
         <servlet-class>nerdbook.Ricerca</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Filter</servlet-name>
+        <servlet-class>nerdbook.Filter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Iscrizione</servlet-name>
         <url-pattern>/Iscrizione</url-pattern>
@@ -49,6 +53,11 @@
     <servlet-mapping>
         <servlet-name>Ricerca</servlet-name>
         <url-pattern>/Ricerca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Filter</servlet-name>
+        <url-pattern>/Filter</url-pattern>
+        <url-pattern>/filter.json</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
