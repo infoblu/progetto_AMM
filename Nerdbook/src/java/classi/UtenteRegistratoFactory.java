@@ -137,7 +137,8 @@ try {
             Connection conn = DriverManager.getConnection(connectionString,"administrator","123");
             String query="select id,amministratore,nome,cognome,urlFotoProfilo,presentazione, "
                     + "CAST (dataNascita as varchar(10)) as sDataNascita from UtentiRegistrati "
-                    + "where nome like '%" + stringaRicerca + "%' order by nome ";
+                    + "where nome like '%" + stringaRicerca + "%' or "
+                    + "cognome like '%" + stringaRicerca + "%'order by cognome ";
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet res=stmt.executeQuery();
             

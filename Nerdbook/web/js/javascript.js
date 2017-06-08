@@ -1,6 +1,6 @@
 function stateSuccess(data, state){       
     kount=0;
-    $(olUtenti).empty();
+    $("#olUtenti").empty();
     for(var instance in data){
         usr=data[instance];
         link = $("<a>")
@@ -12,10 +12,10 @@ function stateSuccess(data, state){
         $("#li_"+kount).append(link);
     }
 }
+
 function stateFailure(data, state){
     console.log(state);
 }
-
 
 $(document).ready(function() {
     $("#nomeUtente").keyup(function(){    

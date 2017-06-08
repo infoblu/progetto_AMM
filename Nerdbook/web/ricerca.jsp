@@ -22,13 +22,13 @@
                 <!--lista degli Utenti -->
                 <ol id="olUtenti">
                     <c:forEach var="utenti" items="${listaUtenti}">
-                        <li><a href="Bacheca?user=${utenti.id}">${utenti.nome}</a></li>
+                        <li><a href="Bacheca?user=${utenti.id}">${utenti.nome} ${utenti.cognome}</a></li>
                     </c:forEach>    
                 </ol>										
         </div>
         <div id="divGruppi">
                 <h3>Gruppi</h3>
-                <ol>
+                <ol id="olGruppi">
                     <c:forEach var="gruppi" items="${listaGruppi}">
                         <li><a href="#">${gruppi.nomeGruppo}</a></li>
                     </c:forEach> 

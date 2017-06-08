@@ -1,0 +1,11 @@
+Correzione Errori:
+Task 2:
+	-Manca un metodo in GruppoFactory/utenteregistratofactory per avere la lista dei gruppi/utenti (o almeno l'elenco degli indici)
+Task 3:
+	-mancana la pagina profilo.jsp
+	-non sono stati individuati gli elementi ripetuti
+	-non hai importato la libreria jstl-core
+Task 6:
+	-Link non funzionanti
+	-logout non funzionante
+	-Inserimento nuovo post non gestito
