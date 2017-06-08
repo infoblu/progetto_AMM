@@ -22,8 +22,7 @@ $(document).ready(function() {
     var testoRicerca = $("#nomeUtente")[0].value;
     var comando="";
     if (testoRicerca==="") comando="all";
-    else comando="search";
-    
+    else comando="search";    
         $.ajax({
             url: "Filter",
             data:{
